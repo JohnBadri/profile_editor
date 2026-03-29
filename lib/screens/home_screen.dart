@@ -4,7 +4,7 @@ import 'package:profile_editor/screens/change_user.dart';
 import 'package:profile_editor/screens/edit_profile.dart';
 
 class HomeScreen extends StatelessWidget {
-  final Function screenSelection;
+  final Function(Widget) screenSelection;
   const HomeScreen({required this.screenSelection, super.key});
 
   @override
@@ -31,18 +31,17 @@ class HomeScreen extends StatelessWidget {
           ),
           OutlinedButton(
             onPressed: () {
-              screenSelection(const EditScreen());
+              // Pass the function into EditScreen here
+              screenSelection(EditScreen(screenSelection: screenSelection));
             },
-            child: Text(
-              'Edit Profile',
-            ),
+            child: const Text('Edit Profile'),
           ),
           SizedBox(
             height: 20,
           ),
           OutlinedButton(
             onPressed: () {
-              screenSelection(const ChangeUser());
+              screenSelection(ChangeUser(screenSelection: screenSelection));
             },
             child: Text(
               'Change User',
