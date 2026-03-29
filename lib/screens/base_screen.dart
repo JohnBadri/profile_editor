@@ -22,7 +22,6 @@ class _BaseScreenState extends State<BaseScreen> {
   @override
   void initState() {
     super.initState();
-    // 3. Pass the activeUser to the first HomeScreen
     currentScreen = HomeScreen(
       screenSelection: switchScreen,
       currentUser: activeUser,

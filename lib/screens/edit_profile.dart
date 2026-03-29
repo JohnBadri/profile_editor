@@ -76,8 +76,7 @@ class _EditScreenState extends State<EditScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: DropdownButton<bool>(
-                    value: dropDownValue, // Don't forget to link the value!
-                    // Fix 2: Map the bool list to DropdownMenuItems
+                    value: dropDownValue,
                     items: <bool>[true, false].map((bool value) {
                       return DropdownMenuItem<bool>(
                         value: value,

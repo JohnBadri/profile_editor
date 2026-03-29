@@ -35,7 +35,6 @@ class HomeScreen extends StatelessWidget {
           ),
           OutlinedButton(
             onPressed: () {
-              // Pass the function into EditScreen here
               screenSelection(
                 EditScreen(
                   screenSelection: screenSelection,

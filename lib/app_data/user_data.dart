@@ -9,4 +9,6 @@ class User {
 List<User> allUsers = [
   User(id: 1, name: 'John', isAdmin: true),
   User(id: 2, name: 'Natalie', isAdmin: false),
+  User(id: 3, name: 'Stacey', isAdmin: false),
+  User(id: 4, name: 'Anthony', isAdmin: false),
 ];
