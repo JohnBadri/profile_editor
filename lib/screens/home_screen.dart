@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:profile_editor/app_data/user_data.dart';
 import 'package:profile_editor/screens/change_user.dart';
 import 'package:profile_editor/screens/edit_profile.dart';
 
 class HomeScreen extends StatelessWidget {
   final Function(Widget) screenSelection;
-  const HomeScreen({required this.screenSelection, super.key});
+  final dynamic currentUser;
+  const HomeScreen({
+    required this.screenSelection,
+    required this.currentUser,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +20,14 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'Name: ${allUsers[0].name}',
+            'Name: ${currentUser.name}',
             textAlign: TextAlign.center,
           ),
           SizedBox(
             height: 20,
           ),
           Text(
-            'Access Status: ${allUsers[0].isAdmin ? 'Pro' : 'Standard'}',
+            'Access Status: ${currentUser.isAdmin ? 'Pro' : 'Standard'}',
             textAlign: TextAlign.center,
           ),
           SizedBox(
@@ -32,7 +36,12 @@ class HomeScreen extends StatelessWidget {
           OutlinedButton(
             onPressed: () {
               // Pass the function into EditScreen here
-              screenSelection(EditScreen(screenSelection: screenSelection));
+              screenSelection(
+                EditScreen(
+                  screenSelection: screenSelection,
+                  currentUser: currentUser,
+                ),
+              );
             },
             child: const Text('Edit Profile'),
           ),
@@ -41,7 +50,12 @@ class HomeScreen extends StatelessWidget {
           ),
           OutlinedButton(
             onPressed: () {
-              screenSelection(ChangeUser(screenSelection: screenSelection));
+              screenSelection(
+                ChangeUser(
+                  screenSelection: screenSelection,
+                  currentUser: currentUser,
+                ),
+              );
             },
             child: Text(
               'Change User',

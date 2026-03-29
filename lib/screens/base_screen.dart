@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profile_editor/app_data/user_data.dart';
 import 'package:profile_editor/screens/home_screen.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -10,6 +11,7 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   late Widget currentScreen;
+  var activeUser = allUsers[0];
 
   void switchScreen(Widget newScreen) {
     setState(() {
@@ -20,7 +22,11 @@ class _BaseScreenState extends State<BaseScreen> {
   @override
   void initState() {
     super.initState();
-    currentScreen = HomeScreen(screenSelection: switchScreen);
+    // 3. Pass the activeUser to the first HomeScreen
+    currentScreen = HomeScreen(
+      screenSelection: switchScreen,
+      currentUser: activeUser,
+    );
   }
 
   @override

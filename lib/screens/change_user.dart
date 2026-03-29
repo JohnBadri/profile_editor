@@ -3,13 +3,19 @@ import 'package:profile_editor/screens/home_screen.dart';
 
 class ChangeUser extends StatefulWidget {
   final Function(Widget) screenSelection;
-  const ChangeUser({required this.screenSelection, super.key});
+  final dynamic currentUser;
+  const ChangeUser({
+    required this.screenSelection,
+    required this.currentUser,
+    super.key,
+  });
 
   @override
   State<ChangeUser> createState() => _ChangeUserState();
 }
 
 class _ChangeUserState extends State<ChangeUser> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -27,7 +33,10 @@ class _ChangeUserState extends State<ChangeUser> {
           OutlinedButton(
             onPressed: () {
               widget.screenSelection(
-                HomeScreen(screenSelection: widget.screenSelection),
+                HomeScreen(
+                  screenSelection: widget.screenSelection,
+                  currentUser: widget.currentUser,
+                ),
               );
             },
             child: Text('Return to Home Screen'),
