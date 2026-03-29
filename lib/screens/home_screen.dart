@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:profile_editor/app_data/user_data.dart';
+import 'package:profile_editor/screens/change_user.dart';
+import 'package:profile_editor/screens/edit_profile.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final Function screenSelection;
+  const HomeScreen({required this.screenSelection, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,9 @@ class HomeScreen extends StatelessWidget {
             height: 20,
           ),
           OutlinedButton(
-            onPressed: () {},
+            onPressed: () {
+              screenSelection(const EditScreen());
+            },
             child: Text(
               'Edit Profile',
             ),
@@ -36,7 +41,9 @@ class HomeScreen extends StatelessWidget {
             height: 20,
           ),
           OutlinedButton(
-            onPressed: () {},
+            onPressed: () {
+              screenSelection(const ChangeUser());
+            },
             child: Text(
               'Change User',
             ),

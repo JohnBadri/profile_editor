@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:profile_editor/screens/home_screen.dart';
 
-class BaseScreen extends StatelessWidget {
+class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});
+
+  @override
+  State<BaseScreen> createState() => _BaseScreenState();
+}
+
+class _BaseScreenState extends State<BaseScreen> {
+  late Widget currentScreen;
+
+  void switchScreen(Widget newScreen) {
+    setState(() {
+      currentScreen = newScreen;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    currentScreen = HomeScreen(screenSelection: switchScreen);
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: SafeArea(
         child: Scaffold(
@@ -17,7 +37,7 @@ class BaseScreen extends StatelessWidget {
           drawer: Drawer(
             child: Text('This is a drawer'),
           ),
-          body: HomeScreen(),
+          body: currentScreen,
         ),
       ),
     );
